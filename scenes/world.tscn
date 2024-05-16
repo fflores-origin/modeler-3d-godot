@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnkdlj1ppupfg"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_f7rqr"]
+[ext_resource type="Script" path="res://scripts/BaseBoxMesh.gd" id="1_uds7a"]
+[ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
+sky_top_color = Color(0.355439, 0.578114, 1, 1)
+sky_horizon_color = Color(0.696029, 0.778174, 0.976305, 1)
+ground_bottom_color = Color(0.428678, 0.534581, 0.905218, 1)
+ground_horizon_color = Color(0.696029, 0.778174, 0.976305, 1)
+
+[sub_resource type="Sky" id="Sky_wkbmc"]
+sky_material = SubResource("ProceduralSkyMaterial_3u6on")
+
+[sub_resource type="Environment" id="Environment_y138u"]
+background_mode = 2
+sky = SubResource("Sky_wkbmc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oq7qv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vgxc"]
+albedo_color = Color(0.854902, 0.286275, 0.858824, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pr5u3"]
+material = SubResource("StandardMaterial3D_7vgxc")
+
+[node name="World" type="Node"]
+script = ExtResource("1_f7rqr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y138u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="BaseBoxMesh" type="StaticBody3D" parent="."]
+script = ExtResource("1_uds7a")
+shape_scale = Vector3(2, 1, 1)
+shape_mesh = Vector3(2, 1, 1)
+
+[node name="Collision" type="CollisionShape3D" parent="BaseBoxMesh"]
+shape = SubResource("BoxShape3D_oq7qv")
+
+[node name="Mesh" type="MeshInstance3D" parent="BaseBoxMesh"]
+mesh = SubResource("BoxMesh_pr5u3")
+
+[node name="RayCast3D" type="RayCast3D" parent="BaseBoxMesh"]
+target_position = Vector3(0, -1.325, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 0, 1.42114, 5)
+script = ExtResource("3_wqbix")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 28.0
+offset_right = 88.0
+offset_bottom = 51.0
+text = "TEXTO"
