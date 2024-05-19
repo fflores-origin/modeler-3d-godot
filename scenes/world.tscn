@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnkdlj1ppupfg"]
+[gd_scene load_steps=11 format=3 uid="uid://dnkdlj1ppupfg"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_f7rqr"]
 [ext_resource type="Script" path="res://scripts/BaseBoxMesh.gd" id="1_uds7a"]
 [ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
+[ext_resource type="Script" path="res://scripts/ControlToggle.gd" id="4_3i5xg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
 sky_top_color = Color(0.355439, 0.578114, 1, 1)
@@ -55,9 +56,31 @@ target_position = Vector3(0, -1.325, 0)
 transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 0, 1.42114, 5)
 script = ExtResource("3_wqbix")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 38.0
-offset_top = 28.0
-offset_right = 88.0
-offset_bottom = 51.0
-text = "TEXTO"
+[node name="ControlToggle" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_3i5xg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlToggle"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+
+[node name="ToggleBtn" type="Button" parent="ControlToggle/VBoxContainer"]
+layout_mode = 2
+text = "Toggle"
+
+[node name="MenuItemsContainer" type="VBoxContainer" parent="ControlToggle/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
+layout_mode = 2
+text = "Menu 1"
+
+[node name="Button2" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
+layout_mode = 2
+text = "Menu 2"
