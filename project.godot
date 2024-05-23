@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Sap-app-godot"
+config/tags=PackedStringArray("app", "web")
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.521124, 0.678243, 0.748302, 1)

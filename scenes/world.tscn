@@ -72,15 +72,15 @@ offset_bottom = 200.0
 
 [node name="ToggleBtn" type="Button" parent="ControlToggle/VBoxContainer"]
 layout_mode = 2
-text = "Toggle"
+text = "Menu "
 
 [node name="MenuItemsContainer" type="VBoxContainer" parent="ControlToggle/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
+[node name="btnCrear" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
 layout_mode = 2
-text = "Menu 1"
+text = "Crear desde cero"
 
-[node name="Button2" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
+[node name="btnListado" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
 layout_mode = 2
-text = "Menu 2"
+text = "Ir a Listado"
