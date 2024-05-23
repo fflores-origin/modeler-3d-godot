@@ -13,12 +13,14 @@ config_version=5
 config/name="Sap-app-godot"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.521124, 0.678243, 0.748302, 1)
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=20
 
 [display]
 
-window/size/viewport_width=648
-window/size/viewport_height=1152
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [dotnet]
 
@@ -40,3 +42,4 @@ mouse_wheel_down={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
