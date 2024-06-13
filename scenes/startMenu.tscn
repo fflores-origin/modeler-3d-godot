@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm08e0qs4xw4x"]
+
+[ext_resource type="Script" path="res://scripts/menues/startMenu.gd" id="1_hwpd4"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hwpd4")
+
+[node name="pnlMain" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1915.0
+offset_bottom = 437.0
+
+[node name="btnStartNew" type="Button" parent="pnlMain"]
+layout_mode = 0
+offset_left = 577.0
+offset_top = 96.0
+offset_right = 777.0
+offset_bottom = 166.0
+text = "Create from Scratch"
+
+[node name="btnStartTemplate" type="Button" parent="pnlMain"]
+layout_mode = 0
+offset_left = 579.0
+offset_top = 173.0
+offset_right = 779.0
+offset_bottom = 243.0
+text = "Create from Template"
+
+[node name="btnGalery" type="Button" parent="pnlMain"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 252.0
+offset_right = 780.0
+offset_bottom = 322.0
+text = "Galery
+"
