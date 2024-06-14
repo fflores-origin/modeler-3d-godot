@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_f7rqr"]
 [ext_resource type="Script" path="res://scripts/BaseBoxMesh.gd" id="1_uds7a"]
 [ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
-[ext_resource type="Script" path="res://scripts/ControlToggle.gd" id="4_3i5xg"]
+[ext_resource type="PackedScene" uid="uid://bbx51hgsjyhc1" path="res://scenes/viewportMenu.tscn" id="4_7thwk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
 sky_top_color = Color(0.355439, 0.578114, 1, 1)
@@ -56,31 +56,4 @@ target_position = Vector3(0, -1.325, 0)
 transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 0, 1.42114, 5)
 script = ExtResource("3_wqbix")
 
-[node name="ControlToggle" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_3i5xg")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlToggle"]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 200.0
-
-[node name="ToggleBtn" type="Button" parent="ControlToggle/VBoxContainer"]
-layout_mode = 2
-text = "Menu "
-
-[node name="MenuItemsContainer" type="VBoxContainer" parent="ControlToggle/VBoxContainer"]
-layout_mode = 2
-
-[node name="btnCrear" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
-layout_mode = 2
-text = "Crear desde cero"
-
-[node name="btnListado" type="Button" parent="ControlToggle/VBoxContainer/MenuItemsContainer"]
-layout_mode = 2
-text = "Ir a Listado"
+[node name="viewportMenu" parent="." instance=ExtResource("4_7thwk")]
