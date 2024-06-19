@@ -39,6 +39,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="BaseBoxMesh" type="StaticBody3D" parent="."]
+visible = false
 script = ExtResource("1_uds7a")
 shape_scale = Vector3(2, 1, 1)
 shape_mesh = Vector3(2, 1, 1)
@@ -57,3 +58,5 @@ transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 
 script = ExtResource("3_wqbix")
 
 [node name="viewportMenu" parent="." instance=ExtResource("4_7thwk")]
+
+[node name="NodeContainer" type="Node3D" parent="."]

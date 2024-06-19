@@ -1,0 +1,94 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbx51hgsjyhc1"]
+
+[ext_resource type="Script" path="res://scripts/ControlToggle.gd" id="1_yh2w8"]
+[ext_resource type="Script" path="res://scripts/menues/btnAddNew.gd" id="2_5w1pv"]
+
+[node name="viewportMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yh2w8")
+
+[node name="menuToggeable" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 249.0
+offset_bottom = 200.0
+
+[node name="btnMenuToggle" type="Button" parent="menuToggeable"]
+layout_mode = 2
+text = "Menu "
+
+[node name="menuToggleItems" type="VBoxContainer" parent="menuToggeable"]
+layout_mode = 2
+
+[node name="btnCrear" type="Button" parent="menuToggeable/menuToggleItems"]
+layout_mode = 2
+text = "New Project"
+
+[node name="btnAddNew" type="Button" parent="menuToggeable/menuToggleItems"]
+layout_mode = 2
+text = "Add New"
+script = ExtResource("2_5w1pv")
+
+[node name="btnExport" type="Button" parent="menuToggeable/menuToggleItems"]
+layout_mode = 2
+text = "Export"
+
+[node name="btnBackToMenu" type="Button" parent="menuToggeable/menuToggleItems"]
+layout_mode = 2
+text = "Back to menu"
+
+[node name="menuHorizontal" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -124.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="pnlBtnCenter" type="Panel" parent="menuHorizontal"]
+custom_minimum_size = Vector2(130, 120)
+layout_mode = 2
+
+[node name="btnCenter" type="Button" parent="menuHorizontal/pnlBtnCenter"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -48.0
+offset_right = 52.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+text = "Center"
+
+[node name="pnlBtnAdd" type="Panel" parent="menuHorizontal"]
+custom_minimum_size = Vector2(130, 120)
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="btnAdd" type="Button" parent="menuHorizontal/pnlBtnAdd"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -48.0
+offset_right = 52.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+text = "Add
+"

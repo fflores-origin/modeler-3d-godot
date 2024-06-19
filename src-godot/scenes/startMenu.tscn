@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/menues/startMenu.gd" id="1_hwpd4"]
 
-[node name="StartMenu" type="Control"]
+[node name="startMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,16 +27,25 @@ text = "Create from Scratch"
 [node name="btnStartTemplate" type="Button" parent="pnlMain"]
 layout_mode = 0
 offset_left = 853.0
-offset_top = 406.0
+offset_top = 484.0
 offset_right = 1053.0
-offset_bottom = 476.0
+offset_bottom = 554.0
 text = "Create from Template"
 
 [node name="btnGalery" type="Button" parent="pnlMain"]
 layout_mode = 0
 offset_left = 854.0
-offset_top = 485.0
+offset_top = 563.0
 offset_right = 1054.0
-offset_bottom = 555.0
+offset_bottom = 633.0
 text = "Galery
+"
+
+[node name="btnCreations" type="Button" parent="pnlMain"]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 406.0
+offset_right = 1051.0
+offset_bottom = 476.0
+text = "You Creations
 "

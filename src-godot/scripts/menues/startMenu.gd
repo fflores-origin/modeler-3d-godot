@@ -9,9 +9,6 @@ extends Control
 func _ready():
 	applyBUtonStyle(btnStartNew)
 
-#func _process(delta):
-	#pass
-	
 	
 func applyBUtonStyle(btn: Button):
 	# Crear un nuevo StyleBoxFlat para el estado normal
