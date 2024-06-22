@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnkdlj1ppupfg"]
+[gd_scene load_steps=12 format=3 uid="uid://dnkdlj1ppupfg"]
 
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_f7rqr"]
+[ext_resource type="Script" path="res://scripts/menues/mainViewport.gd" id="1_kqarx"]
 [ext_resource type="Script" path="res://scripts/BaseBoxMesh.gd" id="1_uds7a"]
 [ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
 [ext_resource type="PackedScene" uid="uid://bbx51hgsjyhc1" path="res://scenes/viewportMenu.tscn" id="4_7thwk"]
+[ext_resource type="Script" path="res://scripts/menues/viewportMenu.gd" id="5_hxxaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
 sky_top_color = Color(0.355439, 0.578114, 1, 1)
@@ -29,7 +30,7 @@ albedo_color = Color(0.854902, 0.286275, 0.858824, 1)
 material = SubResource("StandardMaterial3D_7vgxc")
 
 [node name="MainViewPort" type="Node"]
-script = ExtResource("1_f7rqr")
+script = ExtResource("1_kqarx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y138u")
@@ -58,5 +59,6 @@ transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 
 script = ExtResource("3_wqbix")
 
 [node name="viewportMenu" parent="." instance=ExtResource("4_7thwk")]
+script = ExtResource("5_hxxaq")
 
 [node name="NodeContainer" type="Node3D" parent="."]

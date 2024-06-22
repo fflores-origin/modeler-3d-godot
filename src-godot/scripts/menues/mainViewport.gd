@@ -1,12 +1,8 @@
 extends Node
 
-@onready var camera = $Camera3D;
-@onready var menu = $viewportMenu;
 @onready var nodeContainer = $NodeContainer
 
-func _ready():
-	pass
-	
+var objectsHierachy = []
 
 func addNewBox():
 	print("add new box")
@@ -28,7 +24,4 @@ func addNewBox():
 	
 	meshContainer.add_child(mesh)
 	meshContainer.add_child(collision)
-	
-	
 	nodeContainer.add_child(meshContainer)
-	

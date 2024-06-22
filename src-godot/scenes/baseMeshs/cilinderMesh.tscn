@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cps33qh8ank7s"]
+
+[node name="CilinderMesh" type="Node3D"]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cg3037s2268lr"]
+
+[node name="SphereMesh" type="Node3D"]
