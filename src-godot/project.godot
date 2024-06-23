@@ -27,6 +27,12 @@ window/size/viewport_height=1080
 
 project/assembly_name="Sap-app-godot"
 
+[filesystem]
+
+import/fbx/enabled=false
+import/blender/enabled.android=true
+import/blender/enabled.web=true
+
 [input]
 
 mouse_wheel_up={
@@ -42,5 +48,4 @@ mouse_wheel_down={
 
 [rendering]
 
-renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
