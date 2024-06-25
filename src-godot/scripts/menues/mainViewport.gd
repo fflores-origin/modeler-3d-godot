@@ -2,26 +2,15 @@ extends Node
 
 @onready var nodeContainer = $NodeContainer
 
+const cubeMesh = "res://scenes/baseMeshs/cubeMesh.tscn"
+const cilinderMesh = "res://scenes/baseMeshs/cilinderMesh.tscn"
+const sphereMesh = "res://scenes/baseMeshs/sphereMesh.tscn"
+
 var objectsHierachy = []
 
 func addNewBox():
-	print("add new box")
-	var meshContainer = StaticBody3D.new()
-	meshContainer.name = "Box01"
-	
-	var mesh = MeshInstance3D.new()
-	mesh.name = "MeshBox01"
-	
-	var boxMeshShape = BoxMesh.new()
-	mesh.mesh = boxMeshShape
-	
-	var boxCollisionShape = BoxShape3D.new()
-	boxCollisionShape.extents = Vector3(1, 1, 1)
-	
-	var collision = CollisionShape3D.new()
-	collision.name = "CollisionBox01"
-	collision.shape = boxCollisionShape
-	
-	meshContainer.add_child(mesh)
-	meshContainer.add_child(collision)
-	nodeContainer.add_child(meshContainer)
+	var scene = ResourceLoader.load(cubeMesh)
+	if scene is PackedScene:
+		var instance = scene.instantiate()
+		nodeContainer.add_child(instance)
+		
