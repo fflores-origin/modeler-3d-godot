@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dnkdlj1ppupfg"]
+[gd_scene load_steps=12 format=3 uid="uid://dnkdlj1ppupfg"]
 
 [ext_resource type="Script" path="res://scripts/menues/mainViewport.gd" id="1_kqarx"]
 [ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
 [ext_resource type="PackedScene" uid="uid://bbx51hgsjyhc1" path="res://scenes/viewportMenu.tscn" id="4_7thwk"]
 [ext_resource type="Script" path="res://scripts/menues/viewportMenu.gd" id="5_hxxaq"]
-[ext_resource type="Texture2D" uid="uid://dxifq45xc81k2" path="res://media/images/textures/floor_01/Substance_Graph_BaseColor.jpg" id="5_kcx67"]
-[ext_resource type="Texture2D" uid="uid://c41ounqnpkks4" path="res://media/images/textures/floor_01/Substance_Graph_Roughness.jpg" id="6_bgj4q"]
+[ext_resource type="Texture2D" uid="uid://bfmwankgygqem" path="res://media/images/textures/Dark/texture_08.png" id="5_ukhx0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
 sky_top_color = Color(0.355439, 0.578114, 1, 1)
@@ -22,14 +21,12 @@ sky = SubResource("Sky_wkbmc")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mci74"]
-albedo_texture = ExtResource("5_kcx67")
-roughness_texture = ExtResource("6_bgj4q")
-heightmap_scale = -3.61
-uv1_scale = Vector3(1000, 1000, 1000)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a3vj"]
+albedo_texture = ExtResource("5_ukhx0")
+uv1_scale = Vector3(200, 200, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8w54d"]
-material = SubResource("StandardMaterial3D_mci74")
+material = SubResource("StandardMaterial3D_4a3vj")
 size = Vector3(1000, 0.1, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gh"]
@@ -42,7 +39,7 @@ script = ExtResource("1_kqarx")
 environment = SubResource("Environment_y138u")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 14.806, 0)
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -53,7 +50,7 @@ script = ExtResource("3_wqbix")
 script = ExtResource("5_hxxaq")
 
 [node name="NodeContainer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6493, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.662388, 0)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
