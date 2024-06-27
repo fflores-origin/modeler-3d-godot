@@ -3,12 +3,13 @@
 [ext_resource type="Script" path="res://scripts/menues/mainViewport.gd" id="1_kqarx"]
 [ext_resource type="Script" path="res://scripts/cameraBase.gd" id="3_wqbix"]
 [ext_resource type="PackedScene" uid="uid://bbx51hgsjyhc1" path="res://scenes/viewportMenu.tscn" id="4_7thwk"]
+[ext_resource type="Texture2D" uid="uid://bwre6cxinx50y" path="res://media/images/textures/Dark/texture_07.png" id="5_evebs"]
 [ext_resource type="Script" path="res://scripts/menues/viewportMenu.gd" id="5_hxxaq"]
-[ext_resource type="Texture2D" uid="uid://bfmwankgygqem" path="res://media/images/textures/Dark/texture_08.png" id="5_ukhx0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3u6on"]
-sky_top_color = Color(0.355439, 0.578114, 1, 1)
-sky_horizon_color = Color(0.696029, 0.778174, 0.976305, 1)
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.447838, 0.746641, 0.964523, 1)
+sky_curve = 0.90943
 ground_bottom_color = Color(0.428678, 0.534581, 0.905218, 1)
 ground_horizon_color = Color(0.696029, 0.778174, 0.976305, 1)
 
@@ -19,11 +20,10 @@ sky_material = SubResource("ProceduralSkyMaterial_3u6on")
 background_mode = 2
 sky = SubResource("Sky_wkbmc")
 tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a3vj"]
-albedo_texture = ExtResource("5_ukhx0")
-uv1_scale = Vector3(200, 200, 200)
+albedo_texture = ExtResource("5_evebs")
+uv1_scale = Vector3(240, 150, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8w54d"]
 material = SubResource("StandardMaterial3D_4a3vj")
@@ -45,6 +45,10 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.939364, 0.342922, 0, -0.342922, 0.939364, 0, 1.42114, 3.9673)
 script = ExtResource("3_wqbix")
+ray_length = 3000.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
 [node name="viewportMenu" parent="." instance=ExtResource("4_7thwk")]
 script = ExtResource("5_hxxaq")
