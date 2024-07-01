@@ -4,6 +4,8 @@ Aplicacion dedidicada al diseño de muebles en 3D
 
 ### Requerimientos:
 - Godot 4.2.2 version con Mono
+  - Descargar desde [Link descarga directa](https://github.com/godotengine/godot/releases/download/4.2.2-stable/Godot_v4.2.2-stable_mono_win64.zip)
+  - [Sitio Web Godot](https://godotengine.org/)
 
 ### Pasos para desarrollo
 - Iniciar IDE Godot
