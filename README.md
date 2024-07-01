@@ -12,3 +12,7 @@ Aplicacion dedidicada al diseño de muebles en 3D
 - Importar proyecto buscando el archivo .godot incluido en la carpeta del proyecto
 - Seleccionar Editar
   - Iniciar el proyecto dandole al boton de Play
+
+
+#### Carpeta Tecnologia
+- Diagramas dentro de dentro de carpeta /diagramas
