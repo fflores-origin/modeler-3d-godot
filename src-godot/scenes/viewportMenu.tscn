@@ -28,9 +28,21 @@ layout_mode = 2
 layout_mode = 2
 text = "New Project"
 
+[node name="MenuButton" type="MenuButton" parent="menuToggeable/menuToggleItems"]
+layout_mode = 2
+text = "Primitives"
+flat = false
+item_count = 3
+popup/item_0/text = "Cube"
+popup/item_0/id = 0
+popup/item_1/text = "Sphere"
+popup/item_1/id = 1
+popup/item_2/text = "Cilinder"
+popup/item_2/id = 2
+
 [node name="btnAddNew" type="Button" parent="menuToggeable/menuToggleItems"]
 layout_mode = 2
-text = "Add New"
+text = "Add New Cube"
 script = ExtResource("2_5w1pv")
 
 [node name="btnExport" type="Button" parent="menuToggeable/menuToggleItems"]
