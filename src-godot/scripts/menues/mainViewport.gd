@@ -1,4 +1,5 @@
-extends Node
+extends Node3D
+
 
 @onready var nodeContainer = $NodeContainer
 

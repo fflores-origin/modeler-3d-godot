@@ -32,6 +32,10 @@ var _e = false
 var _shift = false
 var _alt = false
 
+var from : Vector3
+var to : Vector3
+var input_captured = false
+
 func _ready():
 	$RayCast3D.enabled = true
 
@@ -43,6 +47,14 @@ func _input(event):
 	# Receives mouse button input
 	if event is InputEventMouseButton:
 		match event.button_index:
+			MOUSE_BUTTON_LEFT:
+				if event.is_pressed():
+					print("button-left")
+					print("event.position", event.position)
+					from = self.project_ray_origin(event.position)
+					to = from + self.project_ray_normal(event.position) * ray_length
+					input_captured = true
+		
 			MOUSE_BUTTON_RIGHT: # Only allows rotation if right click down
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
 			MOUSE_BUTTON_WHEEL_UP: # Increases max velocity
@@ -70,20 +82,26 @@ func _input(event):
 			KEY_ALT:
 				_alt = event.pressed
 
+func _physics_process(delta):
+	if input_captured:
+		var space_state = get_world_3d().direct_space_state
+		var query = PhysicsRayQueryParameters3D.new()
+		query.from = from
+		query.to = to
+		var result = space_state.intersect_ray(query)
+		if !result.is_empty() and result["collider"] != null:
+			changeMeshColor(result["collider"])
+		else: 
+			changeMeshColor(null)
+		input_captured = false
+
 # Updates mouselook and movement every frame
 func _process(delta):
 	_update_mouselook()
 	_update_movement(delta)
 	
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
-	var from: Vector3 = project_ray_origin(mouse_pos)
-	var to: Vector3 = from + project_ray_normal(mouse_pos) * ray_length
-	
-	 # Configurar el RayCast3D
-	raycast.target_position = to - from
-	raycast.force_raycast_update()
-	
-	checkColideRaycas()
+
 	
 func checkColideRaycas() -> void:
 	
@@ -101,15 +119,31 @@ func checkColideRaycas() -> void:
 			reset_hover_color(last_hovered)
 			last_hovered = null
 
+func changeMeshColor(item: Node3D)-> void:
+	if item != null:
+		print('colider: ', item)
+		if item != last_hovered:
+			print('last_hovered: ', last_hovered)
+			if last_hovered != null:
+				reset_hover_color(last_hovered)
+			apply_hover_color(item)
+			last_hovered = item
+	else:
+		if last_hovered != null:
+			reset_hover_color(last_hovered)
+			last_hovered = null
+
 func apply_hover_color(collider: Node3D) -> void:
-	if collider is MeshInstance3D:
+	var mesh = has_mesh_instance(collider)
+	if collider is Node3D and mesh != null:
 		var material = StandardMaterial3D.new()
-		material.albedo_color = Color(1, 1, 0)  # Cambia al color amarillo
-		collider.material_override = material
+		material.albedo_color = Color.ORANGE  # Cambia al color amarillo
+		mesh.material_override = material
 
 func reset_hover_color(collider: Node3D) -> void:
-	if collider is MeshInstance3D:
-		collider.material_override = null  # Restablece al material original
+	var mesh = has_mesh_instance(collider)
+	if collider is Node3D  and mesh != null:
+		mesh.material_override = null  # Restablece al material original
 
 # Updates camera movement
 func _update_movement(delta):
@@ -157,3 +191,38 @@ func _update_mouselook():
 	
 		rotate_y(deg_to_rad(-yaw))
 		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+
+func line(pos1: Vector3, pos2: Vector3, color = Color.WHITE_SMOKE, persist_ms = 0):
+	var mesh_instance := MeshInstance3D.new()
+	var immediate_mesh := ImmediateMesh.new()
+	var material := ORMMaterial3D.new()
+
+	mesh_instance.mesh = immediate_mesh
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+	immediate_mesh.surface_add_vertex(pos1)
+	immediate_mesh.surface_add_vertex(pos2)
+	immediate_mesh.surface_end()
+
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = color
+
+	return await final_cleanup(mesh_instance, persist_ms)
+
+func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
+	get_tree().get_root().add_child(mesh_instance)
+	if persist_ms == 1:
+		await get_tree().physics_frame
+		mesh_instance.queue_free()
+	elif persist_ms > 0:
+		await get_tree().create_timer(persist_ms).timeout
+		mesh_instance.queue_free()
+	else:
+		return mesh_instance
+
+func has_mesh_instance(node: Node3D) -> MeshInstance3D:
+	for child in node.get_children():
+		if child is MeshInstance3D:
+			return child
+	return null

@@ -11,10 +11,8 @@ extends Control
 var is_collapsed = false
 
 func _ready():
-	
 	toggleButton.pressed.connect(_onToggleButtonPressed)
 	_collapseMenu()
-	
 	formatMenu(horizontalMenuContainer)
 	
 func _onToggleButtonPressed():

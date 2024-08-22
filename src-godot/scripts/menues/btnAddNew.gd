@@ -1,5 +1,5 @@
 extends Button
-@onready var viewportMenu = $viewportMenu
+#@onready var viewportMenu = $viewportMenu
 
 #signal add_new_box(data);
 
