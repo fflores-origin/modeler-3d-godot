@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_2l2gb"]
 
-[node name="CubeMesh" type="Node3D"]
+[node name="EditableObject" type="Node3D"]
 script = ExtResource("1_jfn7u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

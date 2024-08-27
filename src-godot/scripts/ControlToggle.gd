@@ -2,10 +2,7 @@ extends Control
 
 @onready var toggleButton = $menuToggeable/btnMenuToggle
 @onready var menuItemsContainer = $menuToggeable/menuToggleItems
-
 @onready var horizontalMenuContainer = $menuHorizontal
-
-
 
 # Variable para rastrear el estado del menú
 var is_collapsed = false
