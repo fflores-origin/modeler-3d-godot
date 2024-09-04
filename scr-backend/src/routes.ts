@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 
-// import deudoresController from "./controllers/deudoresController";
+import userController from "./controllers/users.controller";
 
 dotenv.config();
 
@@ -12,6 +12,6 @@ router.get("/", async (req, res) => {
     return res.json({ "message": `http://localhost:${port}/api` });
 });
 
-// router.use("/deudores", deudoresController)
+router.use("/users", userController)
 
 export default router;
