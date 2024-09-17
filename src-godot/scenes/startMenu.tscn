@@ -16,6 +16,13 @@ layout_mode = 0
 offset_right = 1915.0
 offset_bottom = 1075.0
 
+[node name="btnLogin" type="Button" parent="pnlMain"]
+offset_left = 853.0
+offset_top = 196.0
+offset_right = 1053.0
+offset_bottom = 266.0
+text = "Login"
+
 [node name="btnStartNew" type="Button" parent="pnlMain"]
 layout_mode = 0
 offset_left = 851.0
@@ -47,5 +54,5 @@ offset_left = 851.0
 offset_top = 406.0
 offset_right = 1051.0
 offset_bottom = 476.0
-text = "You Creations
+text = "Your Creations
 "

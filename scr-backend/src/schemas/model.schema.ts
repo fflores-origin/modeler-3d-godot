@@ -16,3 +16,13 @@ export const meshComponentSchema = new Schema({
 })
 
 export const MeshComponent = model('meshComponent', meshComponentSchema, 'meshComponent')
+
+export const projectSchema = new Schema({
+    _id: { type: Types.ObjectId },
+    dateCreation: { type: Date },
+    dateUpdate: { type: Date },
+    creatorId: { type: Types.ObjectId },
+    models: { type: Array<typeof MeshComponent>, default: [] }
+})
+
+export const Project = model("project", projectSchema, 'project')
