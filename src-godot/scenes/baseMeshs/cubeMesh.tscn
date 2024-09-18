@@ -19,13 +19,13 @@ shape = SubResource("BoxShape3D_k5y3v")
 mesh = SubResource("BoxMesh_2l2gb")
 
 [node name="y" parent="StaticBody3D" instance=ExtResource("2_mng1m")]
-transform = Transform3D(0.092, 0, 0, 0, 0.037, 0, 0, 0, 0.092, 0, 1.5, 0)
+transform = Transform3D(0.092, 0, 0, 0, 0.037, 0, 0, 0, 0.092, 0, 1, 0)
 
 [node name="z" parent="StaticBody3D" instance=ExtResource("2_mng1m")]
-transform = Transform3D(0.092, 0, 0, 0, -1.61732e-09, -0.092, 0, 0.037, -4.02145e-09, 0, 0, 1.5)
+transform = Transform3D(0.092, 0, 0, 0, -1.61732e-09, -0.092, 0, 0.037, -4.02145e-09, 0, 0, 1)
 
 [node name="x" parent="StaticBody3D" instance=ExtResource("2_mng1m")]
-transform = Transform3D(-4.02145e-09, -0.037, 0, 0.092, -1.61732e-09, 0, 0, 0, 0.092, -1.5, 0, 0)
+transform = Transform3D(4.02145e-09, 0.037, -8.0429e-09, 0.092, -1.61732e-09, 0, -3.51566e-16, -3.23464e-09, -0.092, 1, 0, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0

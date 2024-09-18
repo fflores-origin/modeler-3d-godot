@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://de0rma64utw70"]
+[gd_scene load_steps=2 format=3 uid="uid://de0rma64utw70"]
+
+[sub_resource type="Theme" id="Theme_a0r42"]
 
 [node name="LoginMenu" type="Control"]
 clip_contents = true
@@ -9,21 +11,24 @@ anchor_bottom = 1.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_a0r42")
 
 [node name="btn_cancel" type="Button" parent="."]
-offset_left = 833.0
-offset_top = 781.0
-offset_right = 1020.0
-offset_bottom = 857.0
+offset_left = 758.0
+offset_top = 688.0
+offset_right = 1076.0
+offset_bottom = 764.0
 text = "Iniciar Sesion
 "
 
 [node name="btn_login" type="Button" parent="."]
 layout_mode = 0
-offset_left = 831.0
-offset_top = 649.0
-offset_right = 1018.0
-offset_bottom = 725.0
+offset_left = 755.0
+offset_top = 595.0
+offset_right = 1077.0
+offset_bottom = 671.0
 text = "Iniciar Sesion
 "
 
@@ -31,21 +36,23 @@ text = "Iniciar Sesion
 offset_left = 750.0
 offset_top = 358.0
 offset_right = 1082.0
-offset_bottom = 468.0
+offset_bottom = 420.0
+placeholder_text = "Ingrese contrasenia"
 
 [node name="txt_user" type="TextEdit" parent="."]
 layout_mode = 0
 offset_left = 748.0
 offset_top = 202.0
 offset_right = 1080.0
-offset_bottom = 312.0
+offset_bottom = 276.0
+placeholder_text = "Ingrese usuario"
 
 [node name="lbl_password" type="Label" parent="."]
 offset_left = 756.0
 offset_top = 320.0
 offset_right = 868.0
 offset_bottom = 355.0
-text = "Usuario"
+text = "Password"
 
 [node name="lbl_user" type="Label" parent="."]
 layout_mode = 0
