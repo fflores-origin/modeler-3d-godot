@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://de0rma64utw70"]
+[gd_scene load_steps=4 format=3 uid="uid://de0rma64utw70"]
+
+[ext_resource type="Script" path="res://scripts/menues/loginMenu.gd" id="1_35xpr"]
+[ext_resource type="Texture2D" uid="uid://d0vujtxwainsh" path="res://media/images/loading-ring.png" id="2_0hfqf"]
 
 [sub_resource type="Theme" id="Theme_a0r42"]
 
@@ -14,50 +17,85 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_a0r42")
+script = ExtResource("1_35xpr")
 
 [node name="btn_cancel" type="Button" parent="."]
-offset_left = 758.0
-offset_top = 688.0
+layout_mode = 0
+offset_left = 757.0
+offset_top = 591.0
 offset_right = 1076.0
-offset_bottom = 764.0
+offset_bottom = 667.0
 text = "Iniciar Sesion
 "
 
 [node name="btn_login" type="Button" parent="."]
 layout_mode = 0
 offset_left = 755.0
-offset_top = 595.0
+offset_top = 498.0
 offset_right = 1077.0
-offset_bottom = 671.0
+offset_bottom = 574.0
 text = "Iniciar Sesion
 "
 
-[node name="txt_password" type="TextEdit" parent="."]
-offset_left = 750.0
-offset_top = 358.0
-offset_right = 1082.0
-offset_bottom = 420.0
-placeholder_text = "Ingrese contrasenia"
+[node name="user_input" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="txt_user" type="TextEdit" parent="."]
+[node name="txt_user" type="TextEdit" parent="user_input"]
 layout_mode = 0
 offset_left = 748.0
 offset_top = 202.0
-offset_right = 1080.0
-offset_bottom = 276.0
+offset_right = 1074.0
+offset_bottom = 245.0
 placeholder_text = "Ingrese usuario"
 
-[node name="lbl_password" type="Label" parent="."]
-offset_left = 756.0
-offset_top = 320.0
-offset_right = 868.0
-offset_bottom = 355.0
+[node name="lbl_user" type="Label" parent="user_input"]
+layout_mode = 0
+offset_left = 753.0
+offset_top = 155.0
+offset_right = 865.0
+offset_bottom = 190.0
+text = "Usuario"
+
+[node name="lbl_user_error" type="Label" parent="user_input/lbl_user"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 100.0
+offset_right = 305.0
+offset_bottom = 123.0
+
+[node name="password_input" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="txt_password" type="TextEdit" parent="password_input"]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 345.0
+offset_right = 1077.0
+offset_bottom = 386.0
+placeholder_text = "Ingrese contrasenia"
+
+[node name="lbl_password" type="Label" parent="password_input"]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 307.0
+offset_right = 870.0
+offset_bottom = 342.0
 text = "Password"
 
-[node name="lbl_user" type="Label" parent="."]
+[node name="lbl_password_error" type="Label" parent="password_input/lbl_password"]
 layout_mode = 0
-offset_left = 767.0
-offset_top = 156.0
-offset_right = 879.0
-offset_bottom = 191.0
-text = "Usuario"
+offset_left = -3.0
+offset_top = 94.0
+offset_right = 315.0
+offset_bottom = 117.0
+
+[node name="loading" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(919, 519)
+texture = ExtResource("2_0hfqf")
+
+[connection signal="pressed" from="btn_login" to="." method="_on_btn_login_pressed"]

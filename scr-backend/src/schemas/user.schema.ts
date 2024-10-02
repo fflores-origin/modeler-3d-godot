@@ -8,12 +8,12 @@ export const userSchema = new Schema({
     isBlocked: { type: Boolean },
 })
 
-export const User = model('user', userSchema, 'user')
+export const User = model('users', userSchema, 'users')
 
 export const sesionSchema = new Schema({
     _id: { type: Types.ObjectId },
-    user: { type: User },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     dateCreation: { type: Date }
 })
 
-export const Session = model('session', sesionSchema, 'session')
+export const Session = model('sessions', sesionSchema, 'sessions')
