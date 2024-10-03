@@ -6,6 +6,12 @@ export async function getByUserName(name: string) {
 }
 
 export async function loginUser(data: UserLoginDto) {
+    var user = await repository.getUserByName(data.username);
+
+    if (user != null) {
+        return { result: "OK" }
+    }
+
     return data;
 }
 

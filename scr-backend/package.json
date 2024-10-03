@@ -1,14 +1,12 @@
 {
-  "name": "mutual-api",
+  "name": "modeler-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
     "start": "ts-node src/index.ts",
-    "build": "npx tsc",
-    "serve": "node dist/index.js"
+    "auto": "ts-node-dev src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +24,8 @@
     "@types/express": "^4.17.21",
     "@types/helmet": "^4.0.0",
     "@types/node": "^20.9.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.2.2"
   }
