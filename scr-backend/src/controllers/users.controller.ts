@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import userManager from './../services/users.manager'
 import { UserLoginDto } from "../schemas/dtos/users/users.models";
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -18,18 +19,23 @@ router.get("/:userName", async (req: Request, res: Response) => {
 });
 
 router.post("/login", async (req: Request, res: Response) => {
-    console.log("login", req.body)
+
     try {
         if (req.body) {
             const userRequest = req.body as UserLoginDto;
-            var result = await userManager.loginUser(userRequest);
-            console.log('res',result)
-            res.status(200).json({ result: result });
+            var user = await userManager.loginUser(userRequest);
+            const token = jwt.sign(
+                { user },
+                process.env.SECRET_KEY,
+                { expiresIn: '1d' }
+            );
+
+            res.send({ token });
         } else {
             throw new Error("Invalid Request");
         }
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Error. Please contact administrator' });
+        res.status(400).send(error.message);
     }
 })
 

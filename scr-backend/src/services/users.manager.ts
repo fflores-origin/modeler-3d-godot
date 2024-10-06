@@ -9,13 +9,17 @@ export async function loginUser(data: UserLoginDto) {
     var user = await repository.getUserByName(data.username);
 
     if (user != null) {
-        return { result: "OK" }
+        throw new Error("user not found")
     }
 
-    return data;
+    return user;
 }
 
 export default {
     getByUserName,
     loginUser
+}
+
+export class UserService {
+    
 }
