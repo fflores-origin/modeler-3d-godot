@@ -16,3 +16,7 @@ export const NewId = (value: string | null = null) => {
     else
         return new mongoose.Types.ObjectId();
 }
+
+export const toObjectId = (id: string) => {
+    return new mongoose.Types.ObjectId(id);
+}

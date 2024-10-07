@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import userManager from './../services/users.manager'
+import service from './../services/users.manager'
 import { UserLoginDto } from "../schemas/dtos/users/users.models";
 import jwt from 'jsonwebtoken';
 
@@ -8,7 +8,7 @@ const router = express.Router();
 router.get("/:userName", async (req: Request, res: Response) => {
     try {
         if (req.params.userName) {
-            const data = await userManager.getByUserName(req.params.userName);
+            const data = await service.getByUserName(req.params.userName);
             res.status(200).json({ data });
         } else {
             res.status(400).json({ message: 'Non valid User' });
@@ -22,8 +22,10 @@ router.post("/login", async (req: Request, res: Response) => {
 
     try {
         if (req.body) {
+
             const userRequest = req.body as UserLoginDto;
-            var user = await userManager.loginUser(userRequest);
+            var user = await service.login(userRequest);
+
             const token = jwt.sign(
                 { user },
                 process.env.SECRET_KEY,
@@ -31,6 +33,7 @@ router.post("/login", async (req: Request, res: Response) => {
             );
 
             res.send({ token });
+
         } else {
             throw new Error("Invalid Request");
         }
