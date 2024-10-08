@@ -39,7 +39,7 @@ router.post("/register", async (req: Request, res: Response) => {
         if (req.body) {
             const userRequest = req.body as UserLoginDto;
             await service.register(userRequest);
-            res.status(200);
+            res.status(200).json({});
         } else {
             throw new Error("Invalid Request");
         }

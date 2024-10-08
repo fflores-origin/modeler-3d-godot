@@ -33,6 +33,10 @@ export async function register(user: UserLoginDto) {
     Validation.username(user.username)
     Validation.password(user.password)
     const passwordHashed = await bcrypt.hash(user.password, 10);
+
+    var found = UserRepository.findByUsername(user.username);
+    if(found) throw new Error("User already exists");
+
     await UserRepository.create({ username: user.username, password: passwordHashed })
 }
 
