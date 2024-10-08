@@ -24,15 +24,8 @@ router.post("/login", async (req: Request, res: Response) => {
         if (req.body) {
 
             const userRequest = req.body as UserLoginDto;
-            var user = await service.login(userRequest);
-
-            const token = jwt.sign(
-                { user },
-                process.env.SECRET_KEY,
-                { expiresIn: '1d' }
-            );
-
-            res.send({ token });
+            var response = await service.login(userRequest);
+            res.send(response);
 
         } else {
             throw new Error("Invalid Request");

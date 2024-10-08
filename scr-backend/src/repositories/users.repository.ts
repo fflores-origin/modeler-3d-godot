@@ -12,11 +12,10 @@ export async function getById(id: string) {
 
 export async function create(user: any) {
     const id = NewId()
-    const password = await bcrypt.hash(user.password, 10);
     await Save(new User({
         _id: id,
         username: user.username,
-        password: password,
+        password: user.password,
         dateCreation: new Date()
     }));
 }
