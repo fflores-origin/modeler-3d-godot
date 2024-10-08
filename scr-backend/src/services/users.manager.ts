@@ -1,10 +1,10 @@
-import repository from '../repositories/users.repository'
+import { UserRepository } from '../repositories/users.repository'
 import { UserLoginDto } from '../schemas/dtos/users/users.models';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export async function getByUserName(name: string) {
-    const user = await repository.getUsername(name);
+    const user = await UserRepository.findByUsername(name);
     const response = {
         id: user._id,
         username: user.username
@@ -13,7 +13,7 @@ export async function getByUserName(name: string) {
 }
 
 export async function login(data: UserLoginDto) {
-    var user = await repository.getUsername(data.username);
+    var user = await UserRepository.findByUsername(data.username);
 
     if (user == null) throw new Error("user not found");
 
@@ -26,30 +26,45 @@ export async function login(data: UserLoginDto) {
         { expiresIn: '1d' }
     );
 
-    return token;
+    return { username: user.username, token: token };
 }
 
 export async function register(user: UserLoginDto) {
     Validation.username(user.username)
     Validation.password(user.password)
     const passwordHashed = await bcrypt.hash(user.password, 10);
-    await repository.create({ username: user.username, password: passwordHashed })
+    await UserRepository.create({ username: user.username, password: passwordHashed })
+}
+
+export async function logout() {
+    // TODO: validar si es requerido
+}
+
+export async function recover(username: string) {
+
+    UserRepository.findByUsername(username);
+
+    // TODO: enviar mail
+
 }
 
 export default {
     getByUserName,
-    login
+    login,
+    register,
+    logout,
+    recover,
 }
 
 
 class Validation {
     static password(value: string) {
         if (value == null || value == undefined || value == "") throw new Error("password cant be null");
-        if (value.length < 6) throw new Error("lenght can't be less than 6");
+        if (value.length < 6) throw new Error("passwor lenght can't be less than 6");
     }
 
     static username(value: string) {
         if (value == null || value == undefined || value == "") throw new Error("user cant be null");
-        if (value.length < 4) throw new Error("lenght can't be less than 4");
+        if (value.length < 4) throw new Error("username lenght can't be less than 4");
     }
 }
