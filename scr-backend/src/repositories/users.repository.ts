@@ -37,6 +37,6 @@ export class UserRepository {
     }
 
     static async findByUsername(name: string) {
-        return await User.findOne({ userName: name });
+        return await User.findOne({ username: name });
     }
 }
