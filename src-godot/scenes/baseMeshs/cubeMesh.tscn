@@ -36,124 +36,248 @@ mesh = SubResource("BoxMesh_2l2gb")
 [node name="is_editable" type="Node" parent="body"]
 
 [node name="menu" type="Panel" parent="."]
-offset_right = 434.0
-offset_bottom = 313.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -176.5
+offset_bottom = 176.5
+grow_horizontal = 0
+grow_vertical = 2
 
-[node name="menu_container_vertical" type="VBoxContainer" parent="menu"]
+[node name="menu_container_dimensions" type="VBoxContainer" parent="menu"]
 layout_mode = 2
 offset_left = 56.0
 offset_top = 31.0
 offset_right = 363.0
 offset_bottom = 116.0
 
-[node name="menu_x" type="HBoxContainer" parent="menu/menu_container_vertical"]
+[node name="lbl_dimension" type="Label" parent="menu/menu_container_dimensions"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "DIMENSION"
+
+[node name="menu_x" type="HBoxContainer" parent="menu/menu_container_dimensions"]
 layout_mode = 2
 
-[node name="lbl_value" type="Label" parent="menu/menu_container_vertical/menu_x"]
+[node name="lbl_value" type="Label" parent="menu/menu_container_dimensions/menu_x"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 text = "X"
 horizontal_alignment = 1
 
-[node name="btn_down" type="Button" parent="menu/menu_container_vertical/menu_x"]
+[node name="btn_down" type="Button" parent="menu/menu_container_dimensions/menu_x"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-"
 
-[node name="txt_value" type="TextEdit" parent="menu/menu_container_vertical/menu_x"]
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_dimensions/menu_x"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+scroll_v_scroll_speed = 1.0
+scroll_past_end_of_file = true
 
-[node name="btn_add" type="Button" parent="menu/menu_container_vertical/menu_x"]
+[node name="btn_add" type="Button" parent="menu/menu_container_dimensions/menu_x"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "+"
 
-[node name="menu_y" type="HBoxContainer" parent="menu/menu_container_vertical"]
+[node name="menu_y" type="HBoxContainer" parent="menu/menu_container_dimensions"]
 layout_mode = 2
 
-[node name="lbl_value" type="Label" parent="menu/menu_container_vertical/menu_y"]
+[node name="lbl_value" type="Label" parent="menu/menu_container_dimensions/menu_y"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 text = "Y"
 horizontal_alignment = 1
 
-[node name="btn_down" type="Button" parent="menu/menu_container_vertical/menu_y"]
+[node name="btn_down" type="Button" parent="menu/menu_container_dimensions/menu_y"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-"
 
-[node name="txt_value" type="TextEdit" parent="menu/menu_container_vertical/menu_y"]
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_dimensions/menu_y"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="btn_add" type="Button" parent="menu/menu_container_vertical/menu_y"]
+[node name="btn_add" type="Button" parent="menu/menu_container_dimensions/menu_y"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "+"
 
-[node name="menu_z" type="HBoxContainer" parent="menu/menu_container_vertical"]
+[node name="menu_z" type="HBoxContainer" parent="menu/menu_container_dimensions"]
 layout_mode = 2
 
-[node name="lbl_value" type="Label" parent="menu/menu_container_vertical/menu_z"]
+[node name="lbl_value" type="Label" parent="menu/menu_container_dimensions/menu_z"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 text = "Z"
 horizontal_alignment = 1
 
-[node name="btn_down" type="Button" parent="menu/menu_container_vertical/menu_z"]
+[node name="btn_down" type="Button" parent="menu/menu_container_dimensions/menu_z"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "-"
 
-[node name="txt_value" type="TextEdit" parent="menu/menu_container_vertical/menu_z"]
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_dimensions/menu_z"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="btn_add" type="Button" parent="menu/menu_container_vertical/menu_z"]
+[node name="btn_add" type="Button" parent="menu/menu_container_dimensions/menu_z"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "+"
 
-[node name="scale_x" type="StaticBody3D" parent="."]
+[node name="menu_container_postions" type="VBoxContainer" parent="menu"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 185.0
+offset_right = 363.0
+offset_bottom = 312.0
+
+[node name="lbl_positions" type="Label" parent="menu/menu_container_postions"]
+layout_mode = 2
+text = "POSITION"
+
+[node name="menu_x" type="HBoxContainer" parent="menu/menu_container_postions"]
+layout_mode = 2
+
+[node name="lbl_x" type="Label" parent="menu/menu_container_postions/menu_x"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "X"
+horizontal_alignment = 1
+
+[node name="btn_position_x_down" type="Button" parent="menu/menu_container_postions/menu_x"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-"
+
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_postions/menu_x"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+scroll_v_scroll_speed = 1.0
+scroll_past_end_of_file = true
+
+[node name="btn_position_x_add" type="Button" parent="menu/menu_container_postions/menu_x"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="menu_y" type="HBoxContainer" parent="menu/menu_container_postions"]
+layout_mode = 2
+
+[node name="lbl_y" type="Label" parent="menu/menu_container_postions/menu_y"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Y
+"
+horizontal_alignment = 1
+
+[node name="btn_position_y_down" type="Button" parent="menu/menu_container_postions/menu_y"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-"
+
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_postions/menu_y"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+scroll_v_scroll_speed = 1.0
+scroll_past_end_of_file = true
+
+[node name="btn_position_y_add" type="Button" parent="menu/menu_container_postions/menu_y"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="menu_z" type="HBoxContainer" parent="menu/menu_container_postions"]
+layout_mode = 2
+
+[node name="lbl_z" type="Label" parent="menu/menu_container_postions/menu_z"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Z"
+horizontal_alignment = 1
+
+[node name="btn_position_z_down" type="Button" parent="menu/menu_container_postions/menu_z"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-"
+
+[node name="txt_value" type="TextEdit" parent="menu/menu_container_postions/menu_z"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+scroll_v_scroll_speed = 1.0
+scroll_past_end_of_file = true
+
+[node name="btn_position_z_add" type="Button" parent="menu/menu_container_postions/menu_z"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="gizmo" type="Node3D" parent="."]
+
+[node name="scale_x" type="StaticBody3D" parent="gizmo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00369775, 1)
 
-[node name="scale_x_mesh" type="MeshInstance3D" parent="scale_x"]
+[node name="scale_x_mesh" type="MeshInstance3D" parent="gizmo/scale_x"]
 mesh = SubResource("SphereMesh_w8rkv")
 surface_material_override/0 = SubResource("StandardMaterial3D_pviq4")
 
-[node name="scale_x_collision" type="CollisionShape3D" parent="scale_x"]
+[node name="scale_x_collision" type="CollisionShape3D" parent="gizmo/scale_x"]
 shape = SubResource("BoxShape3D_bsunf")
 
-[node name="scale_z" type="StaticBody3D" parent="."]
+[node name="scale_z" type="StaticBody3D" parent="gizmo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996302, 0)
 
-[node name="scale_z_mesh" type="MeshInstance3D" parent="scale_z"]
+[node name="scale_z_mesh" type="MeshInstance3D" parent="gizmo/scale_z"]
 mesh = SubResource("SphereMesh_w8rkv")
 surface_material_override/0 = SubResource("StandardMaterial3D_6vs6p")
 
-[node name="scale_z_collision" type="CollisionShape3D" parent="scale_z"]
+[node name="scale_z_collision" type="CollisionShape3D" parent="gizmo/scale_z"]
 shape = SubResource("BoxShape3D_bsunf")
 
-[node name="scale_y" type="StaticBody3D" parent="."]
+[node name="scale_y" type="StaticBody3D" parent="gizmo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.00369775, 0)
 
-[node name="scale_y_mesh" type="MeshInstance3D" parent="scale_y"]
+[node name="scale_y_mesh" type="MeshInstance3D" parent="gizmo/scale_y"]
 mesh = SubResource("SphereMesh_w8rkv")
 surface_material_override/0 = SubResource("StandardMaterial3D_rrbdj")
 
-[node name="scale_y_collision" type="CollisionShape3D" parent="scale_y"]
+[node name="scale_y_collision" type="CollisionShape3D" parent="gizmo/scale_y"]
 shape = SubResource("BoxShape3D_bsunf")
 
-[connection signal="pressed" from="menu/menu_container_vertical/menu_x/btn_down" to="." method="_on_btn_down_x_pressed"]
-[connection signal="pressed" from="menu/menu_container_vertical/menu_x/btn_add" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="menu/menu_container_vertical/menu_y/btn_down" to="." method="_on_btn_down_y_pressed"]
-[connection signal="pressed" from="menu/menu_container_vertical/menu_y/btn_add" to="." method="_on_btn_add_y_pressed"]
-[connection signal="pressed" from="menu/menu_container_vertical/menu_z/btn_down" to="." method="_on_btn_down_z_pressed"]
-[connection signal="pressed" from="menu/menu_container_vertical/menu_z/btn_add" to="." method="_on_btn_add_z_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_x/btn_down" to="." method="_on_btn_down_x_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_x/btn_add" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_y/btn_down" to="." method="_on_btn_down_y_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_y/btn_add" to="." method="_on_btn_add_y_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_z/btn_down" to="." method="_on_btn_down_z_pressed"]
+[connection signal="pressed" from="menu/menu_container_dimensions/menu_z/btn_add" to="." method="_on_btn_add_z_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_x/btn_position_x_down" to="." method="_on_btn_position_x_down_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_x/btn_position_x_add" to="." method="_on_btn_position_x_add_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_y/btn_position_y_down" to="." method="_on_btn_position_y_down_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_y/btn_position_y_add" to="." method="_on_btn_position_y_add_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_z/btn_position_z_down" to="." method="_on_btn_position_z_down_pressed"]
+[connection signal="pressed" from="menu/menu_container_postions/menu_z/btn_position_z_add" to="." method="_on_btn_position_z_add_pressed"]
