@@ -18,4 +18,3 @@ func find_ancestor_of_type(type_name: String):
 			return current_node
 		current_node = current_node.get_parent()
 	return null
-

@@ -137,7 +137,7 @@ func apply_hover_color(collider: Node3D) -> void:
 	var mesh = has_mesh_instance(collider)
 	if collider is Node3D and mesh != null:
 		var material = StandardMaterial3D.new()
-		material.albedo_color = Color.ORANGE  # Cambia al color amarillo
+		material.albedo_color = Color.AQUAMARINE  # Cambia el color
 		mesh.material_override = material
 
 func reset_hover_color(collider: Node3D) -> void:
@@ -193,7 +193,17 @@ func _update_mouselook():
 		rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
 
 func has_mesh_instance(node: Node3D) -> MeshInstance3D:
+	var isEditable = node.has_node("is_editable")
+	for child in node.get_children():
+		if child is MeshInstance3D and isEditable:
+			return child
+	return null
+
+func hash_mesh_instance_and_is_editable(node: Node3D)-> MeshInstance3D:
+	var isEditable = node.has_node("is_editable")
+	print("isEditable", isEditable)
 	for child in node.get_children():
 		if child is MeshInstance3D:
 			return child
 	return null
+	

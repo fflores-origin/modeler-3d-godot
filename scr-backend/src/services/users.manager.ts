@@ -22,22 +22,23 @@ export async function login(data: UserLoginDto) {
     const token = jwt.sign(
         {
             id: user._id,
-            username: user.username
+            username: user.username,
+            permissions: []
         },
         process.env.SECRET_KEY,
         { expiresIn: '1d' }
     );
 
-    return { username: user.username, token: token };
+    return { token: token };
 }
 
 export async function register(user: UserLoginDto) {
     Validation.username(user.username)
     Validation.password(user.password)
-    const passwordHashed = await bcrypt.hash(user.password, 10);
+    const passwordHashed = await bcrypt.hash(user.password, process.env.ENCRIPTION_SALT);
 
     var found = UserRepository.findByUsername(user.username);
-    if(found) throw new Error("User already exists");
+    if (found) throw new Error("User already exists");
 
     await UserRepository.create({ username: user.username, password: passwordHashed })
 }
@@ -48,7 +49,9 @@ export async function logout() {
 
 export async function recover(username: string) {
 
-    UserRepository.findByUsername(username);
+    const user = UserRepository.findByUsername(username);
+    if (user == null) throw new Error('user does not exists!')
+    const oneTimeToken = await bcrypt.hash(username, process.env.ENCRIPTION_SALT);
 
     // TODO: enviar mail
 
