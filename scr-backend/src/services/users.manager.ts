@@ -14,8 +14,10 @@ export async function getByUserName(name: string) {
 
 export async function login(data: UserLoginDto) {
     var user = await UserRepository.findByUsername(data.username);
+    if (user==null) throw new Error("user not found");
 
-    if (user == null) throw new Error("user not found");
+    // if(bcrypt(data.password))
+
 
     const token = jwt.sign(
         {
