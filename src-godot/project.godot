@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Sap-app-godot"
+config/name="Sap-app-godot-4-3"
 config/tags=PackedStringArray("app", "web")
 run/main_scene="res://scenes/mainViewPort.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/bg_color=Color(0.521124, 0.678243, 0.748302, 1)
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=20
@@ -29,9 +29,9 @@ project/assembly_name="Sap-app-godot"
 
 [filesystem]
 
-import/fbx/enabled=false
 import/blender/enabled.android=true
 import/blender/enabled.web=true
+import/fbx/enabled=false
 
 [input]
 
