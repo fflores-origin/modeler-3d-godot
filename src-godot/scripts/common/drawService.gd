@@ -29,4 +29,3 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
 		mesh_instance.queue_free()
 	else:
 		return mesh_instance
-

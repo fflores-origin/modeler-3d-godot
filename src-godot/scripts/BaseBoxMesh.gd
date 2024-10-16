@@ -18,4 +18,3 @@ func setBoxShapeSize():
 	box.extents.y = self.height/2
 	box.extents.z = self.depth/2
 	return box
-

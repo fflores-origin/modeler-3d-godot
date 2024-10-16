@@ -1,29 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqawhiw0sdxmw"]
+[gd_scene load_steps=5 format=3 uid="uid://dqawhiw0sdxmw"]
 
 [ext_resource type="Script" path="res://scripts/baseMesh/cubeMesh.gd" id="1_jfn7u"]
+[ext_resource type="PackedScene" uid="uid://babshjhw5rhjq" path="res://scenes/common/gizmo.tscn" id="2_mkktn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k5y3v"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2l2gb"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_w8rkv"]
-radius = 0.1
-height = 0.2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pviq4"]
-albedo_color = Color(0, 0.207427, 0.999999, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bsunf"]
-size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vs6p"]
-albedo_color = Color(4.76494e-06, 0.857709, 1.92523e-06, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrbdj"]
-albedo_color = Color(1, 0.0405029, 0.0223527, 1)
-
 [node name="editable_object" type="Node3D"]
 script = ExtResource("1_jfn7u")
+
+[node name="gizmo" parent="." instance=ExtResource("2_mkktn")]
 
 [node name="body" type="StaticBody3D" parent="."]
 
@@ -236,38 +223,6 @@ scroll_past_end_of_file = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "+"
-
-[node name="gizmo" type="Node3D" parent="."]
-
-[node name="scale_x" type="StaticBody3D" parent="gizmo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00369775, 1)
-
-[node name="scale_x_mesh" type="MeshInstance3D" parent="gizmo/scale_x"]
-mesh = SubResource("SphereMesh_w8rkv")
-surface_material_override/0 = SubResource("StandardMaterial3D_pviq4")
-
-[node name="scale_x_collision" type="CollisionShape3D" parent="gizmo/scale_x"]
-shape = SubResource("BoxShape3D_bsunf")
-
-[node name="scale_z" type="StaticBody3D" parent="gizmo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996302, 0)
-
-[node name="scale_z_mesh" type="MeshInstance3D" parent="gizmo/scale_z"]
-mesh = SubResource("SphereMesh_w8rkv")
-surface_material_override/0 = SubResource("StandardMaterial3D_6vs6p")
-
-[node name="scale_z_collision" type="CollisionShape3D" parent="gizmo/scale_z"]
-shape = SubResource("BoxShape3D_bsunf")
-
-[node name="scale_y" type="StaticBody3D" parent="gizmo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.00369775, 0)
-
-[node name="scale_y_mesh" type="MeshInstance3D" parent="gizmo/scale_y"]
-mesh = SubResource("SphereMesh_w8rkv")
-surface_material_override/0 = SubResource("StandardMaterial3D_rrbdj")
-
-[node name="scale_y_collision" type="CollisionShape3D" parent="gizmo/scale_y"]
-shape = SubResource("BoxShape3D_bsunf")
 
 [connection signal="pressed" from="menu/menu_container_dimensions/menu_x/btn_down" to="." method="_on_btn_down_x_pressed"]
 [connection signal="pressed" from="menu/menu_container_dimensions/menu_x/btn_add" to="." method="_on_button_pressed"]

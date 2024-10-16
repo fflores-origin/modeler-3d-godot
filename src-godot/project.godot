@@ -18,6 +18,10 @@ boot_splash/bg_color=Color(0.521124, 0.678243, 0.748302, 1)
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=20
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [display]
 
 window/size/viewport_width=1920

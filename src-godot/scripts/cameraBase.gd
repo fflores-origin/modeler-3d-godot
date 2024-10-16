@@ -1,7 +1,10 @@
-class_name FreeLookCamera extends Camera3D
+class_name FreeLookCamera 
+extends Camera3D
+
+@onready var drawService = DrawService.new()
 
 @onready var raycast = $RayCast3D
-@export var ray_length : float = 1000
+@export var ray_length : float = 10000
 var last_hovered: Node3D = null
 
 # Modifier keys' speed multiplier
@@ -34,10 +37,19 @@ var _alt = false
 
 var from : Vector3
 var to : Vector3
-var input_captured = false
+var left_button_mouse_pressed = false
 
 func _ready():
 	$RayCast3D.enabled = true
+	add_child(drawService)
+
+# not-used
+func set_proyect_ray_proyection():
+	var query = PhysicsRayQueryParameters3D.new()
+	var camera = get_viewport().get_camera_3d()
+	var mouse_position = get_viewport().get_mouse_position()
+	from = camera.project_ray_origin(mouse_position)
+	to = query.from + camera.project_ray_normal(mouse_position) * 1000
 
 func _input(event):
 	# Receives mouse motion
@@ -48,12 +60,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_LEFT:
+				left_button_mouse_pressed = event.is_pressed()
 				if event.is_pressed():
-					print("button-left")
-					print("event.position", event.position)
+					print("mouse.event.position: ", event.position)
 					from = self.project_ray_origin(event.position)
 					to = from + self.project_ray_normal(event.position) * ray_length
-					input_captured = true
 		
 			MOUSE_BUTTON_RIGHT: # Only allows rotation if right click down
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if event.pressed else Input.MOUSE_MODE_VISIBLE)
@@ -82,33 +93,67 @@ func _input(event):
 			KEY_ALT:
 				_alt = event.pressed
 
-func _physics_process(_delta):
-	if input_captured:
+func _physics_process(_delta)->void:
+	if left_button_mouse_pressed:
 		var space_state = get_world_3d().direct_space_state
 		var query = PhysicsRayQueryParameters3D.new()
 		query.from = from
 		query.to = to
-		var result = space_state.intersect_ray(query)
-		if !result.is_empty() and result["collider"] != null:
-			changeMeshColor(result["collider"])
+		
+		#drawService.line(from, to)
+		
+		var result = null
+		var item = null
+
+		var max_scan = 2
+		var counter = 0
+		
+		while true:
+			counter+=1
+			# busco intersecciones
+			result = space_state.intersect_ray(query)
+			
+			if !left_button_mouse_pressed or result.is_empty() or counter == max_scan:
+				break;
+			
+			if !result.is_empty() and result["collider"] != null:
+				var clicked_object = result["collider"]
+				print(clicked_object.name)
+				if(has_mesh_instance(clicked_object)):
+					Global.set_actual_object(clicked_object)
+			
+				if clicked_object.name == "scale_x" or clicked_object.name == "scale_y" or clicked_object.name == "scale_z":
+					#print("Clicked on gizmo axis: ", clicked_object.name)
+					break
+				
+				var direction:Vector3 = (query.to - query.from).normalized()
+				query.from = result["position"] + direction * 0.01
+			
+		#if !result.is_empty() and result["collider"] != null:
+		if Global.actual_object != null:
+			changeMeshColor(Global.actual_object)
 		else: 
 			changeMeshColor(null)
-		input_captured = false
 
 # Updates mouselook and movement every frame
 func _process(delta):
 	_update_mouselook()
 	_update_movement(delta)
 	
-	#var mouse_pos: Vector2 = get_viewport().get_mouse_position()
+	#if(left_button_mouse_pressed):
+		#print("presionado")
+	#else:
+		#print("release")
+
 
 	
 func checkColideRaycas() -> void:
 	
 	if raycast.is_colliding():
+		var space_state = get_world_3d().direct_space_state
+		print(space_state)
 		print('check is_colliding')
 		var collider: Node3D = raycast.get_collider()
-		print('colider', collider)
 		if collider != last_hovered:
 			if last_hovered != null:
 				reset_hover_color(last_hovered)
@@ -121,17 +166,16 @@ func checkColideRaycas() -> void:
 
 func changeMeshColor(item: Node3D)-> void:
 	if item != null:
-		print('colider: ', item)
 		if item != last_hovered:
-			print('last_hovered: ', last_hovered)
-			if last_hovered != null:
-				reset_hover_color(last_hovered)
+			#if last_hovered != null:
+				#reset_hover_color(last_hovered)
 			apply_hover_color(item)
 			last_hovered = item
-	else:
-		if last_hovered != null:
-			reset_hover_color(last_hovered)
-			last_hovered = null
+
+	#else:
+		#if last_hovered != null:
+			#reset_hover_color(last_hovered)
+			#last_hovered = null
 
 func apply_hover_color(collider: Node3D) -> void:
 	var mesh = has_mesh_instance(collider)
@@ -201,7 +245,7 @@ func has_mesh_instance(node: Node3D) -> MeshInstance3D:
 
 func hash_mesh_instance_and_is_editable(node: Node3D)-> MeshInstance3D:
 	var isEditable = node.has_node("is_editable")
-	print("isEditable", isEditable)
+	#print("isEditable", isEditable)
 	for child in node.get_children():
 		if child is MeshInstance3D:
 			return child

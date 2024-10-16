@@ -50,7 +50,7 @@ func resize_mesh( axis:String, isAdd:bool) -> void:
 	txt_value.text = format_float(mesh.mesh.size[axis])
 
 func move_mesh( axis:String, isAdd:bool) -> void:
-	var direction = -0.01 if isAdd else 0.01
+	var direction = -0.1 if isAdd else 0.1
 	match axis:
 		"x":
 			mesh.translate(Vector3(direction, 0, 0)) 
