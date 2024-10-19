@@ -1,12 +1,14 @@
 extends Node3D
 
-@onready var body = $body
-@onready var collision = $body/body_collision
-@onready var mesh = $body/body_mesh
+@onready var editable_object = $"."
 
-@onready var txt_x = $menu/menu_container_dimensions/menu_x/txt_value
-@onready var txt_y = $menu/menu_container_dimensions/menu_y/txt_value
-@onready var txt_z = $menu/menu_container_dimensions/menu_z/txt_value
+@onready var body: StaticBody3D = $body
+@onready var collision: CollisionShape3D = $body/body_collision
+@onready var mesh: MeshInstance3D = $body/body_mesh
+
+@onready var txt_x: TextEdit = $menu/menu_container_dimensions/menu_x/txt_value
+@onready var txt_y: TextEdit = $menu/menu_container_dimensions/menu_y/txt_value
+@onready var txt_z: TextEdit = $menu/menu_container_dimensions/menu_z/txt_value
 
 func _ready():
 	txt_x.text = format_float(mesh.mesh.size.x)
@@ -42,6 +44,7 @@ func resize_mesh( axis:String, isAdd:bool) -> void:
 	
 	if isAdd:
 		mesh.mesh.size[axis] += .01
+		
 	else:
 		if mesh.mesh.size[axis] > 0:
 			mesh.mesh.size[axis] -= .01
@@ -53,11 +56,11 @@ func move_mesh( axis:String, isAdd:bool) -> void:
 	var direction = -0.1 if isAdd else 0.1
 	match axis:
 		"x":
-			mesh.translate(Vector3(direction, 0, 0)) 
+			self.translate(Vector3(direction, 0, 0)) 
 		"y":
-			mesh.translate(Vector3(0,direction, 0)) 
+			self.translate(Vector3(0,direction, 0)) 
 		"z":
-			mesh.translate(Vector3(0, 0, direction)) 
+			self.translate(Vector3(0, 0, direction)) 
 
 	var txt_value:TextEdit = get_node("menu/menu_container_postions/menu_"+axis+"/txt_value")
 	txt_value.text = format_float(mesh.global_position[axis])
