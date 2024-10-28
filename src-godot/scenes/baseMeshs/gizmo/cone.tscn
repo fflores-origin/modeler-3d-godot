@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw83mpx6as8wu"]
+
+[ext_resource type="PackedScene" uid="uid://d1dml7x7tqiw5" path="res://media/models/cone.glb" id="1_0pknp"]
+[ext_resource type="Script" path="res://scripts/common/gizmo/cone.gd" id="2_ysfvr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y82hs"]
+
+[node name="cone" instance=ExtResource("1_0pknp")]
+script = ExtResource("2_ysfvr")
+
+[node name="Cone" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y82hs")
+
+[node name="StaticBody3D" parent="Cone" index="0"]
+visible = false

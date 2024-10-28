@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bsbe4eq5el383"
-path="res://.godot/imported/arrow.glb-03587e7c17729b34aca6b416de7f5a1a.scn"
+uid="uid://d1dml7x7tqiw5"
+path="res://.godot/imported/cone.glb-ce8b115ad83ba45e97442e04b9fd71a5.scn"
 
 [deps]
 
-source_file="res://media/models/arrow.glb"
-dest_files=["res://.godot/imported/arrow.glb-03587e7c17729b34aca6b416de7f5a1a.scn"]
+source_file="res://media/models/cone.glb"
+dest_files=["res://.godot/imported/cone.glb-ce8b115ad83ba45e97442e04b9fd71a5.scn"]
 
 [params]
 
@@ -17,6 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
@@ -28,6 +29,7 @@ animation/import=true
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
 gltf/naming_version=1

@@ -1,6 +1,7 @@
 extends Node
 
 var actual_object: Node3D = null
+@export var urlBase = "http://localhost:7000/api";
 
 var scene_models: Array = []
 

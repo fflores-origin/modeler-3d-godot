@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://babshjhw5rhjq"]
+[gd_scene load_steps=7 format=3 uid="uid://babshjhw5rhjq"]
+
+[ext_resource type="PackedScene" uid="uid://cw83mpx6as8wu" path="res://scenes/baseMeshs/gizmo/cone.tscn" id="1_i4mhx"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_w8rkv"]
 radius = 0.1
@@ -22,6 +24,18 @@ albedo_color = Color(1, 0.0405029, 0.0223527, 1)
 [node name="gizmo" type="Node3D"]
 
 [node name="scale" type="Node3D" parent="."]
+
+[node name="cone_z2" parent="scale" instance=ExtResource("1_i4mhx")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1, 0)
+color = "Green"
+
+[node name="cone_z" parent="scale" instance=ExtResource("1_i4mhx")]
+transform = Transform3D(0.15049, 0, 0, 0, -6.57815e-09, -0.15049, 0, 0.15049, -6.57815e-09, 0, 0, 1)
+color = "Blue"
+
+[node name="cone_x" parent="scale" instance=ExtResource("1_i4mhx")]
+transform = Transform3D(-6.57815e-09, 0.15049, 0, -0.15049, -6.57815e-09, 0, 0, 0, 0.15049, 1, 0, 0)
+color = "Red"
 
 [node name="scale_x" type="StaticBody3D" parent="scale"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00369775, 1)
