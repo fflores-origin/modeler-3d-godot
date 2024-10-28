@@ -123,7 +123,7 @@ func _physics_process(_delta)->void:
 					Global.set_actual_object(clicked_object)
 			
 				if clicked_object.name == "scale_x" or clicked_object.name == "scale_y" or clicked_object.name == "scale_z":
-					#print("Clicked on gizmo axis: ", clicked_object.name)
+					print("Clicked on gizmo axis: ", clicked_object.name)
 					break
 				
 				var direction:Vector3 = (query.to - query.from).normalized()
@@ -140,15 +140,7 @@ func _process(delta):
 	_update_mouselook()
 	_update_movement(delta)
 	
-	#if(left_button_mouse_pressed):
-		#print("presionado")
-	#else:
-		#print("release")
-
-
-	
 func checkColideRaycas() -> void:
-	
 	if raycast.is_colliding():
 		var space_state = get_world_3d().direct_space_state
 		print(space_state)

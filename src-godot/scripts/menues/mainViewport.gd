@@ -29,3 +29,6 @@ func addSceneInstance(scene ) -> void:
 	if scene is PackedScene:
 		var instance = scene.instantiate()
 		nodeContainer.add_child(instance)
+		
+		Global.set_actual_object(instance.get_node('body'))
+		

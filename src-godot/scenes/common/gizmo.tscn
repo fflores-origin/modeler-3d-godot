@@ -6,14 +6,17 @@
 
 [node name="scale" type="Node3D" parent="."]
 
-[node name="cone_y" parent="scale" instance=ExtResource("1_i4mhx")]
+[node name="scale_y" parent="scale" instance=ExtResource("1_i4mhx")]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1, 0)
 color = "Green"
+cone_name = "scale_y"
 
-[node name="cone_z" parent="scale" instance=ExtResource("1_i4mhx")]
+[node name="scale_z" parent="scale" instance=ExtResource("1_i4mhx")]
 transform = Transform3D(0.15049, 0, 0, 0, -6.57815e-09, -0.15049, 0, 0.15049, -6.57815e-09, 0, 0, 1)
 color = "Blue"
+cone_name = "scale_z"
 
-[node name="cone_x" parent="scale" instance=ExtResource("1_i4mhx")]
+[node name="scale_x" parent="scale" instance=ExtResource("1_i4mhx")]
 transform = Transform3D(-6.57815e-09, 0.15049, 0, -0.15049, -6.57815e-09, 0, 0, 0, 0.15049, 1, 0, 0)
 color = "Red"
+cone_name = "scale_x"

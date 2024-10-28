@@ -10,7 +10,9 @@
 [node name="editable_object" type="Node3D"]
 script = ExtResource("1_jfn7u")
 
-[node name="gizmo" parent="." instance=ExtResource("2_mkktn")]
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="gizmo" parent="SubViewport" instance=ExtResource("2_mkktn")]
 
 [node name="body" type="StaticBody3D" parent="."]
 
